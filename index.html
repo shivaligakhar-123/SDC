@@ -10,17 +10,18 @@
         <!-- <h1>{{vm.hello}}</h1> -->
         <h1>Todo List</h1>
         <!-- <h1>{{vm.hello.hi | plural}}</h1> -->
-        <input type="text" ng-model="vm.newTask" id="taskText">
+        <input id="special" type="text" ng-model="vm.newTask" id="taskText">
         <button id="submitButton" ng-click="vm.createTask()" class="button">Create</button>
         <ul>
             <li class="taskDiv" ng-repeat="task in vm.tasks">
                 <button type="button" class="delete" ng-click="vm.deleteTask(task)">Delete Task</button>
-
-                <p class="taskTitle" ng-model="task.title" ng-class="{'completed': task.status == true,'incompleted': task.status == false }">{{task.title}}</p>
+                <input class="task" ng-class="{'completed': task.status == true,'incompleted': task.status == false }"
+                    type="text" ng-model="task.title" ng-model-options="{standalone: true}">
                 <!-- <p>{{task.status}}</p> -->
                 <input class="checkBox" type="checkbox" name="isCompleted" class="isCompleted" ng-model="task.status">
             </li>
         </ul>
+        <!-- <button ng-click="vm.show()"></button> -->
     </div>
 
 </body>

@@ -5,6 +5,7 @@ This is a todo list made using angular.js as a frontend framework.
 
 ## Features
 
+- **Editable Tasks** :- The Tasks can be edited by clicking on them and they are saved in the backend with every key you press.
 - **Add Task** :- Add tasks by writing your task in new task field and click on create button
 - **Delete Task** :- Delete tasks by clicking on delete button provided along side each of the task.
 - **Mark task as completed** :- Mark task as completed and then they will be striked with a line. Tick the check box to mark a task as completed.
