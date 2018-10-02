@@ -11,14 +11,14 @@
         <h1>Todo List</h1>
         <!-- <h1>{{vm.hello.hi | plural}}</h1> -->
         <input type="text" ng-model="vm.newTask" id="taskText">
-        <button id="submitButton" ng-click="vm.createTask()">Create</button>
+        <button id="submitButton" ng-click="vm.createTask()" class="button">Create</button>
         <ul>
             <li class="taskDiv" ng-repeat="task in vm.tasks">
                 <button type="button" class="delete" ng-click="vm.deleteTask(task)">Delete Task</button>
 
                 <p class="taskTitle" ng-model="task.title" ng-class="{'completed': task.status == true,'incompleted': task.status == false }">{{task.title}}</p>
                 <!-- <p>{{task.status}}</p> -->
-                <input type="checkbox" name="isCompleted" class="isCompleted" ng-model="task.status">
+                <input class="checkBox" type="checkbox" name="isCompleted" class="isCompleted" ng-model="task.status">
             </li>
         </ul>
     </div>
