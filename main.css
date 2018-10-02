@@ -1,11 +1,11 @@
-/* body {
+body {
   background: black;
   color: white;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 2em;
+  /* font-size: 2em; */
   text-align: center;
-} */
+}
 
 input[type="text"] {
   background-color: black;
@@ -25,10 +25,39 @@ input[type="text"]:focus {
   outline: none;
 }
 
-.listDiv {
-  display: flex;
-  flex-direction: row;
+ul {
+  margin: 0;
+  padding: 0;
 }
+li {
+  overflow-y: auto;
+  width: 60%;
+  list-style: none;
+  font-size: 3em;
+  border: 1px solid grey;
+  box-shadow: 2px 2px 2p #999;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.taskDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .iscomplete {
+  float: left;
+}
+.delete {
+  float: right;
+}
+.taskTitle {
+  float: clear;
+} */
 
 /* 
 #submitButton {

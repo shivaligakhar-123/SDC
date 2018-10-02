@@ -11,36 +11,21 @@
 
 <body>
 
-    <div ng-app="todoAngularSDC" ng-controller="mainCtrl as vm" class="container ">
+    <div ng-app="todoAngularSDC" ng-controller="mainCtrl as vm" class="container" data-ng-init="init()">
         <!-- <h1>{{vm.hello}}</h1> -->
         <h1>Todo List</h1>
         <!-- <h1>{{vm.hello.hi | plural}}</h1> -->
         <input type="text" ng-model="vm.newTask" id="taskText">
         <button id="submitButton" ng-click="vm.createTask()">Create</button>
-        <div class="taskDiv" ng-if="vm.currStatusShow==0" ng-repeat="task in vm.tasks" class="listDiv">
-            <button type="button" class="btn btn-primary" ng-click="vm.deleteTask(task)">Delete Task</button>
+        <ul>
+            <li class="taskDiv" ng-repeat="task in vm.tasks">
+                <button type="button" class="delete" ng-click="vm.deleteTask(task)">Delete Task</button>
 
-            <p contenteditable="true" ng-model="task.title">{{task.title}}</p>
-            <p>{{task.status}}</p>
-            <input type="checkbox" name="isCompleted" ng-model="task.status">
-        </div>
-        <div class="taskDiv" ng-if="vm.currStatusShow==1" ng-repeat="task in vm.tasks">
-            <span ng-if="task.status=true">
-                <button ng-click="vm.deleteTask(task)">Delete Task</button>
-                <p contenteditable="true" ng-model="task.title">{{task.title}}</p>
-                <p>{{task.status}}</p>
-                <input type="checkbox" name="isCompleted" ng-model="task.status">
-            </span>
-
-        </div>
-        <div class="taskDiv" ng-if="vm.currStatusShow==2" ng-repeat="task in vm.tasks">
-            <span ng-if="task.status=false">
-                <button ng-click="vm.deleteTask(task)">Delete Task</button>
-                <p contenteditable="true" ng-model="task.title">{{task.title}}</p>
-                <p>{{task.status}}</p>
-                <input type="checkbox" name="isCompleted" ng-model="task.status">
-            </span>
-        </div>
+                <p class="taskTitle" ng-model="task.title" ng-class="{'completed': task.status == true,'incompleted': task.status == false }">{{task.title}}</p>
+                <!-- <p>{{task.status}}</p> -->
+                <input type="checkbox" name="isCompleted" class="isCompleted" ng-model="task.status">
+            </li>
+        </ul>
 
         <!-- <button ng-click="vm.alert()"></button>
         <li ng-repeat="y in vm.posts">
