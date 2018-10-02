@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script> -->
+
+<link rel="stylesheet" href="main.css">
 
 <body>
 
-    <div ng-app="todoAngularSDC" ng-controller="mainCtrl as vm">
+    <div ng-app="todoAngularSDC" ng-controller="mainCtrl as vm" class="container ">
         <!-- <h1>{{vm.hello}}</h1> -->
         <h1>Todo List</h1>
         <!-- <h1>{{vm.hello.hi | plural}}</h1> -->
-        <input type="text" ng-model="vm.newTask">
-        <button ng-click="vm.createTask()">Create</button>
-        <div class="taskDiv" ng-repeat="task in vm.taskName">
-            <button ng-click="vm.deleteTask(task)">Delete Task</button>
-            <p>{{task}}</p>
-            <p>{{vm.tasks[task]}}</p>
-            <input type="checkbox" name="isCompleted" ng-model="vm.tasks[task]" ng-true-value="'complete'"
-                ng-false-value="'incomplete'">
+        <input type="text" ng-model="vm.newTask" id="taskText">
+        <button id="submitButton" ng-click="vm.createTask()">Create</button>
+        <div class="taskDiv" ng-if="vm.currStatusShow==0" ng-repeat="task in vm.tasks" class="listDiv">
+            <button type="button" class="btn btn-primary" ng-click="vm.deleteTask(task)">Delete Task</button>
+
+            <p contenteditable="true" ng-model="task.title">{{task.title}}</p>
+            <p>{{task.status}}</p>
+            <input type="checkbox" name="isCompleted" ng-model="task.status">
+        </div>
+        <div class="taskDiv" ng-if="vm.currStatusShow==1" ng-repeat="task in vm.tasks">
+            <span ng-if="task.status=true">
+                <button ng-click="vm.deleteTask(task)">Delete Task</button>
+                <p contenteditable="true" ng-model="task.title">{{task.title}}</p>
+                <p>{{task.status}}</p>
+                <input type="checkbox" name="isCompleted" ng-model="task.status">
+            </span>
+
+        </div>
+        <div class="taskDiv" ng-if="vm.currStatusShow==2" ng-repeat="task in vm.tasks">
+            <span ng-if="task.status=false">
+                <button ng-click="vm.deleteTask(task)">Delete Task</button>
+                <p contenteditable="true" ng-model="task.title">{{task.title}}</p>
+                <p>{{task.status}}</p>
+                <input type="checkbox" name="isCompleted" ng-model="task.status">
+            </span>
         </div>
 
         <!-- <button ng-click="vm.alert()"></button>
