@@ -20,6 +20,9 @@ app.controller("mainCtrl", function($scope, $http) {
   this.show = function() {
     console.log(vm.tasks);
   };
+  this.example = function() {
+    console.log("hi");
+  };
 
   $scope.$watch("$viewContentLoaded", function() {
     $http
